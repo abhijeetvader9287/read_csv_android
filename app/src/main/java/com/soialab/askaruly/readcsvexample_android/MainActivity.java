@@ -6,8 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.soialab.askaruly.readcsvexample_android.dummy.DummyContent;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Defining ordered collection as WeatherSample class
-    private List<WeatherSample> weatherSamples = new ArrayList<>();
+    private List<ContactModel> contactModels = new ArrayList<>();
 
     private void readWeatherDataByColumn() {
         // Read the raw csv file
@@ -79,21 +77,24 @@ public class MainActivity extends AppCompatActivity {
                 // use comma as separator columns of CSV
                 String[] tokens = line.split(",");
                 // Read the data
-                WeatherSample sample = new WeatherSample();
+                ContactModel sample = new ContactModel();
 
                 // Setters
-                sample.setMonth(tokens[0]);
-                sample.setRainfall( tokens[1] );
-                sample.setSumHours( tokens[2] );
+                sample.setName(tokens[0]);
+                sample.setMobile( tokens[1] );
+                sample.setEmail_TO( tokens[2] );
+                sample.setEmail_CC( tokens[3] );
+                sample.setEmail_BCC( tokens[4] );
+                sample.setStatus( tokens[5] );
 
                 // Adding object to a class
-                weatherSamples.add(sample);
+                contactModels.add(sample);
 
                 // Log the object
                 Log.d("My Activity", "Just created: " + sample);
             }
             list.setLayoutManager(new LinearLayoutManager(this));
-            list.setAdapter(new MyItemRecyclerViewAdapter(weatherSamples ));
+            list.setAdapter(new MyItemRecyclerViewAdapter(contactModels));
         } catch (IOException e) {
             // Logs error with priority level
             Log.wtf("MyActivity", "Error reading data file on line" + line, e);

@@ -14,9 +14,9 @@ import java.util.List;
  * TODO: Replace the implementation with code for your data type.
  */
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
-    private final List<WeatherSample> mValues;
+    private final List<ContactModel> mValues;
 
-    public MyItemRecyclerViewAdapter(List<WeatherSample> items ) {
+    public MyItemRecyclerViewAdapter(List<ContactModel> items ) {
         mValues = items;
      }
 
@@ -30,8 +30,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).getMonth()+"");
-        holder.mContentView.setText(mValues.get(position).getSumHours()+"");
+       /* holder.mIdView.setText(mValues.get(position).getMonth()+"");
+        holder.mContentView.setText(mValues.get(position).getSumHours()+"");*/
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,20 +47,20 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public WeatherSample mItem;
+       /* public final TextView mIdView;
+        public final TextView mContentView;*/
+        public ContactModel mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+           /* mIdView = (TextView) view.findViewById(R.id.item_number);
+            mContentView = (TextView) view.findViewById(R.id.content);*/
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() ;
         }
     }
 }
